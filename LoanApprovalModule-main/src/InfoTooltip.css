@@ -1,0 +1,45 @@
+.info-tooltip-container {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    color: #9ca3af;
+}
+
+.info-tooltip-container:hover .info-icon {
+    color: #3b82f6;
+    /* Blue on hover */
+}
+
+.tooltip-bubble {
+    position: absolute;
+    bottom: 140%;
+    /* Above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    width: max-content;
+    max-width: 200px;
+    z-index: 100;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    line-height: 1.4;
+    text-transform: none;
+    font-weight: 400;
+    text-align: center;
+}
+
+.tooltip-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1f2937 transparent transparent transparent;
+}

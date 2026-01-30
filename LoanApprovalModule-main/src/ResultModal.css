@@ -1,0 +1,305 @@
+.result-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.result-modal {
+    background: white;
+    width: 95%;
+    max-width: 450px;
+    /* Default for single column */
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 90vh;
+    overflow-y: auto;
+    transition: max-width 0.3s ease;
+}
+
+/* WIDER Modal when Insights are present (Landscape Layout) */
+.result-modal.has-insights {
+    max-width: 850px;
+}
+
+.result-content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Default Status Colors - Borders Removed */
+/* .result-modal.approved { } */
+/* .result-modal.rejected { } */
+
+.result-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #9ca3af;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.result-close-btn:hover {
+    color: #1f2937;
+}
+
+
+/* --- Left Column Components --- */
+.result-header-section {
+    margin-bottom: 1.5rem;
+}
+
+.result-icon-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem;
+}
+
+.result-modal.approved .result-icon-container {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.result-modal.rejected .result-icon-container {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.result-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.result-heading {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: #111827;
+}
+
+.result-subheading {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.result-probability-block {
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.prob-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.prob-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.prob-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.prob-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.prob-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease-out;
+}
+
+.prob-bar-fill.low {
+    background-color: #ef4444;
+}
+
+.prob-bar-fill.medium {
+    background-color: #f59e0b;
+}
+
+.prob-bar-fill.high {
+    background-color: #10b981;
+}
+
+.prob-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.prob-badge.low {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.prob-badge.medium {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.prob-badge.high {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.result-action-btn {
+    width: 100%;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #31006f;
+    color: white;
+}
+
+.result-action-btn:hover {
+    background-color: #1e0045;
+}
+
+.result-action-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* --- Right Column (Insights) --- */
+.result-insights-section {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+    /* justify-content: center; Use if we want vertical centering */
+}
+
+.insight-block {
+    background-color: #fff;
+    padding-bottom: 0.5rem;
+}
+
+.insight-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.insight-title.red {
+    color: #dc2626;
+}
+
+.insight-title.blue {
+    color: #2563eb;
+}
+
+.insight-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.insight-list li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- Desktop Grid Layout (>768px) --- */
+@media (min-width: 768px) {
+    .result-modal.has-insights .result-content-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        /* Split roughly 45% / 55% */
+        gap: 2.5rem;
+        align-items: start;
+        text-align: left;
+    }
+
+    .result-modal.has-insights .result-left {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        gap: 1rem;
+    }
+
+    .result-modal.has-insights .result-icon-container {
+        margin: 0 auto 1rem auto;
+    }
+
+    /* Add a subtle separator between columns */
+    .result-modal.has-insights .result-right {
+        border-left: 1px solid #f3f4f6;
+        padding-left: 2.5rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
